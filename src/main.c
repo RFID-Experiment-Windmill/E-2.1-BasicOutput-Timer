@@ -1,6 +1,5 @@
 #include "BoardBase.h"
 #include "LedBlinker.h"
-#include "STC/Serial/Serial.h"
 #include "STC/Timer/Timer.h"
 
 /**
