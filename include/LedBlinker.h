@@ -14,9 +14,9 @@
 
 #define Led Led_P1
 
-int isLedOn()
+inline int isLedOn()
 {
-    return Led == 0;
+    return !Led;
 }
 
 /**
@@ -31,22 +31,20 @@ void onSysTickOneMs()
     /**
      * @brief Remain lighting time in microsecond
      */
-    static uint16_t remainLightingTime;
+    static uint16_t remainLightingTime = 0;
     /**
      * @brief Remain off time in microsecond
      */
-    static uint16_t remainOffTime;
+    static uint16_t remainOffTime = 1000;
     if (isLedOn()) {
         if (!--remainLightingTime) {
             Led           = 1;
             remainOffTime = 1000;
         }
     }
-    else {
-        if (!--remainOffTime) {
-            Led = 0;
-            remainLightingTime = nextLightingTime * 1000;
-            if (--nextLightingTime == 0) nextLightingTime = 5;
-        }
+    else if (!--remainOffTime) {
+        Led                = 0;
+        remainLightingTime = nextLightingTime * 1000;
+        if (--nextLightingTime == 0) nextLightingTime = 5;
     }
 }
