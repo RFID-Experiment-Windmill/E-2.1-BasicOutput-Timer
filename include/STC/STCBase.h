@@ -9,14 +9,14 @@
 /**
  * @brief Frequency of the oscillator
  *
- * Oscillator Frequency -> 6 MHz
+ * Oscillator Frequency -> 11.0592 MHz
  */
-#define FreqOsc (6000000)
+#define FreqOsc (11059200)
 
 /**
  * @brief Frequency of the System Clock
  */
-#define SysClock (FreqOsc << (CLK_DIV & 0x7)))
+#define SysClock (FreqOsc << (CLK_DIV & 0x7))
 
 /**
  * @brief How many SysClock passes in 1 millisecond
